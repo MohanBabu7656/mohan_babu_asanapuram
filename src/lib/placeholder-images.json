@@ -3,7 +3,7 @@
     {
       "id": "avatar",
       "description": "Professional headshot of a person in a modern setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1575264821278-fd76711cd1b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cG9ydHJhaXQlMjBwZXJzb258ZW58MHx8fHwxNzcxMDA0NTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/img.png",
       "imageHint": "portrait person"
     },
     {

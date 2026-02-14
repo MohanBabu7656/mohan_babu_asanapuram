@@ -5,6 +5,9 @@ import { Toaster } from "@/components/ui/toaster"
 export const metadata: Metadata = {
   title: 'Mohan Babu Asanapuram | Portfolio',
   description: 'Creative Portfolio of Mohan Babu Asanapuram',
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({
