@@ -14,9 +14,9 @@ export const portfolioData = {
   ],
   greetings: [
     "Hi, I'm ",
-    "AI Engineer ",
-    "FastAPI Expert ",
-    "System Builder "
+    "AI  Engineer ",
+    "FastAPI  Expert ",
+    "System  Builder "
   ],
   socials: [
     { name: "GitHub", url: "https://github.com/MohanBabu7656", icon: GitHub },

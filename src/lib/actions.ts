@@ -62,14 +62,17 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 }
 
 function getPortfolioContentAsString(): string {
-  const { name, jobTitle, about, skills, projects } = portfolioData;
+  const { name, jobTitle, about, skills, projects, experience } = portfolioData;
 
   const skillsString = skills.map(skill => skill.name).join(', ');
   const projectsString = projects.map(p => `Title: ${p.title}, Description: ${p.shortDescription}`).join('\n');
+  const experienceString = experience.map(exp => `${exp.role} at ${exp.organization} (${exp.duration})`).join('\n');
 
   return `
     Portfolio of ${name}, ${jobTitle}.
     About: ${about.descriptionPoints.join(' ')}
+    Work Experience:
+    ${experienceString}
     Skills: ${skillsString}
     Projects:
     ${projectsString}
