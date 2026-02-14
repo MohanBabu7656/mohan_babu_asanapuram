@@ -2,17 +2,13 @@ import Image from "next/image";
 import { portfolioData } from "@/lib/data";
 import { Card } from "@/components/ui/card";
 import { ChevronRight, Briefcase } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export function About() {
   const skills = portfolioData.skills;
   const experiences = portfolioData.experience;
+  const skillCategories = [...new Set(skills.map((skill) => skill.category))];
 
   return (
     <section id="about" className="w-full py-16 md:py-24 bg-card">
@@ -62,34 +58,35 @@ export function About() {
             </div>
             <div>
               <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left mb-6">My Skillset</h3>
-              <div className="relative">
-                <Carousel
-                  opts={{
-                    align: "start",
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent>
-                    {skills.map((skill, index) => (
-                      <CarouselItem
-                        key={index}
-                        className="basis-1/3 sm:basis-1/4 lg:basis-1/5"
-                      >
-                        <div className="p-1">
-                          <Card className="flex flex-col aspect-square items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
-                            <skill.icon className="w-8 h-8 mb-2 text-primary" />
-                            <span className="text-sm font-medium text-center">
-                              {skill.name}
-                            </span>
-                          </Card>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="hidden sm:flex" />
-                  <CarouselNext className="hidden sm:flex" />
-                </Carousel>
-              </div>
+              <Tabs defaultValue={skillCategories[0]} className="w-full">
+                <div className="w-full overflow-x-auto pb-2">
+                    <TabsList className="inline-flex">
+                        {skillCategories.map((category) => (
+                            <TabsTrigger key={category} value={category}>
+                                {category}
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+                </div>
+                {skillCategories.map((category) => (
+                    <TabsContent key={category} value={category}>
+                        <ScrollArea className="h-64">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pr-4">
+                                {skills
+                                    .filter((skill) => skill.category === category)
+                                    .map((skill, index) => (
+                                        <Card key={index} className="flex flex-col aspect-square items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
+                                            <skill.icon className="w-8 h-8 mb-2 text-primary" />
+                                            <span className="text-sm font-medium text-center">
+                                                {skill.name}
+                                            </span>
+                                        </Card>
+                                    ))}
+                            </div>
+                        </ScrollArea>
+                    </TabsContent>
+                ))}
+            </Tabs>
             </div>
           </div>
         </div>

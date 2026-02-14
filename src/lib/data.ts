@@ -13,10 +13,10 @@ export const portfolioData = {
     }
   ],
   greetings: [
-    "Hi, I'm",
-    "AI Engineer",
-    "FastAPI Expert",
-    "System Builder"
+    "Hi, I'm ",
+    "AI Engineer ",
+    "FastAPI Expert ",
+    "System Builder "
   ],
   socials: [
     { name: "GitHub", url: "https://github.com/MohanBabu7656", icon: GitHub },
@@ -26,7 +26,7 @@ export const portfolioData = {
     { name: "Phone", url: "tel:6281865015", icon: Phone },
   ],
   about: {
-    avatar: PlaceHolderImages.find(img => img.id === 'avatar')?.imageUrl ?? "/image.png",
+    avatar: "/image.png",
     descriptionPoints: [
       "Results-driven AI & Backend Engineer with hands-on experience in LLM-powered document automation, FastAPI backend systems, and production-grade deployments.",
       "I specialize in building scalable AI pipelines using LangChain, implementing secure JWT-based authentication systems, and containerizing applications with Docker for consistent dev-to-production environments.",
