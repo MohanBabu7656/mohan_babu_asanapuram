@@ -38,9 +38,12 @@ const AnimatedTypingText = ({ texts }: { texts: string[] }) => {
   }, [text, isDeleting, typingSpeed, loopNum, texts]);
 
   return (
-    <span className="inline-block pr-1 border-r-2 border-primary" aria-label={text}>
-      {text}&nbsp;
-    </span>
+    <>
+      <span className="inline-block pr-1 border-r-2 border-primary" aria-label={text}>
+        {text}
+      </span>
+      <span>&nbsp;</span>
+    </>
   );
 };
 
