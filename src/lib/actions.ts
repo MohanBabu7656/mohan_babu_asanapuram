@@ -28,7 +28,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
   try {
     // In a real application, you would send an email or save to a database here.
     console.log("Contact form submitted successfully:", validatedFields.data);
-    return { success: true, message: "Your message has been sent successfully!" };
+    return { success: true, message: "Message sent! (Note: This is a demo. The message is logged to the server console, not emailed.)" };
   } catch (error) {
     console.error("Error submitting contact form:", error);
     return { success: false, message: "An error occurred. Please try again." };
