@@ -3,7 +3,7 @@
     {
       "id": "avatar",
       "description": "Professional headshot of a person in a modern setting.",
-      "imageUrl": "/img.png",
+      "imageUrl": "/image.png",
       "imageHint": "portrait person"
     },
     {
