@@ -5,7 +5,6 @@ import { Resend } from "resend";
 import { askPortfolioAssistant } from "@/ai/flows/portfolio-ai-assistant";
 import { portfolioData } from "@/lib/data";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const portfolioEmail = portfolioData.socials.find(s => s.name === 'Email')?.url.replace('mailto:', '');
 
 const contactFormSchema = z.object({
@@ -28,6 +27,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
+  
+  const { name, email, message } = validatedFields.data;
 
   if (!process.env.RESEND_API_KEY || !portfolioEmail) {
     console.log("RESEND_API_KEY is not set or portfolio email is not available. Email not sent.");
@@ -37,10 +38,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       message: "Message sent! (Note: This is a demo. The message is logged to the server console, not emailed.)",
     };
   }
-  
-  const { name, email, message } = validatedFields.data;
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: portfolioEmail,
