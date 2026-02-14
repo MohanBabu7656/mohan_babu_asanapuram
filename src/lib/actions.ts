@@ -1,8 +1,12 @@
 "use server";
 
 import { z } from "zod";
+import { Resend } from "resend";
 import { askPortfolioAssistant } from "@/ai/flows/portfolio-ai-assistant";
 import { portfolioData } from "@/lib/data";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+const portfolioEmail = portfolioData.socials.find(s => s.name === 'Email')?.url.replace('mailto:', '');
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -25,13 +29,36 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     };
   }
 
+  if (!process.env.RESEND_API_KEY || !portfolioEmail) {
+    console.log("RESEND_API_KEY is not set or portfolio email is not available. Email not sent.");
+    console.log("Form data:", validatedFields.data);
+    return {
+      success: true,
+      message: "Message sent! (Note: This is a demo. The message is logged to the server console, not emailed.)",
+    };
+  }
+  
+  const { name, email, message } = validatedFields.data;
+
   try {
-    // In a real application, you would send an email or save to a database here.
-    console.log("Contact form submitted successfully:", validatedFields.data);
-    return { success: true, message: "Message sent! (Note: This is a demo. The message is logged to the server console, not emailed.)" };
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: portfolioEmail,
+      subject: `New contact form submission from ${name}`,
+      reply_to: email,
+      html: `
+        <p>You received a new message from your portfolio contact form.</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `
+    });
+
+    return { success: true, message: "Your message has been sent successfully!" };
   } catch (error) {
-    console.error("Error submitting contact form:", error);
-    return { success: false, message: "An error occurred. Please try again." };
+    console.error("Error sending email:", error);
+    return { success: false, message: "An error occurred while sending the email. Please try again." };
   }
 }
 
