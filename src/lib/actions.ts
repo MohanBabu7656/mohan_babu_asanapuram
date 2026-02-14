@@ -99,12 +99,10 @@ export async function askAI(question: string) {
     return result.answer;
   } catch (error) {
     console.error("Error with AI assistant:", error);
-    let errorMessage = "Sorry, I'm having trouble connecting to my brain right now. Please try again later.";
     if (error instanceof Error) {
-        if (error.message.includes("API key not valid")) {
-            errorMessage = "It seems the provided GEMINI_API_KEY is not valid. Please check your .env file and ensure it's a correct, active Google AI API key.";
-        }
+        // Display a more specific error message to the user.
+        return `Sorry, an error occurred: ${error.message}`;
     }
-    return errorMessage;
+    return "Sorry, I'm having trouble connecting to my brain right now. An unknown error occurred.";
   }
 }
