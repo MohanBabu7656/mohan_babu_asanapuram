@@ -20,6 +20,7 @@ export function About() {
                 src={portfolioData.about.avatar}
                 alt="Avatar of Mohan Babu Asanapuram"
                 fill
+                sizes="(max-width: 768px) 192px, 256px"
                 style={{ objectFit: "cover" }}
                 className="transition-transform duration-500 hover:scale-110"
                 data-ai-hint="portrait person"
