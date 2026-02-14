@@ -83,6 +83,11 @@ function getPortfolioContentAsString(): string {
 }
 
 export async function askAI(question: string) {
+  if (!process.env.GEMINI_API_KEY) {
+    console.error("GEMINI_API_KEY is not set.");
+    return "The AI assistant is not configured. To make it work, please create a `GEMINI_API_KEY` secret and set it to a valid Google AI API key.";
+  }
+
   if (!question || question.trim().length === 0) {
     return "Please ask a question.";
   }
