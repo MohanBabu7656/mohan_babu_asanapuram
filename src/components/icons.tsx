@@ -55,7 +55,7 @@ export const Framer = (props: SVGProps<SVGSVGElement>) => (
 
 // Re-exporting from lucide-react for consistency
 export { 
-  GitHub, 
+  Github as GitHub, 
   Linkedin, 
   Mail, 
   Twitter, 
