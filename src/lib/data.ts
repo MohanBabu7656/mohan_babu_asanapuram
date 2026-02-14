@@ -1,4 +1,4 @@
-import { GitHub, Linkedin, Mail, Twitter, Code, Monitor, Server, Database, TestTube, Cloud, Palette, Figma, Framer, Git, Nextjs, ReactIcon, Tailwind, Typescript } from '@/components/icons';
+import { GitHub, Linkedin, Mail, Phone, Code, Monitor, Server, Database, TestTube, Cloud, Palette, Figma, Framer, Git, Nextjs, ReactIcon, Tailwind, Typescript, WhatsappIcon } from '@/components/icons';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const portfolioData = {
@@ -9,18 +9,24 @@ export const portfolioData = {
       id: 'techm',
       organization: 'Tech Mahindra',
       role: 'AI & Backend Engineer',
-      duration: '2022 - Present',
+      duration: '2023 - Present',
     }
   ],
-  greetings: ["Hello, I'm", "Hola, soy", "Bonjour, je suis"],
+  greetings: [
+    "Hi, I'm,",
+    "AI, Engineer,",
+    "FastAPI, Expert,",
+    "System, Builder,"
+  ],
   socials: [
     { name: "GitHub", url: "https://github.com/MohanBabu7656", icon: GitHub },
     { name: "LinkedIn", url: "https://linkedin.com/in/mohan-babu-asanapuram-b37923214", icon: Linkedin },
     { name: "Email", url: "mailto:asanapurammohanbabu@gmail.com", icon: Mail },
-
+    { name: "WhatsApp", url: "https://wa.me/qr/DADEAHEKQIS3P1", icon: WhatsappIcon },
+    { name: "Phone", url: "tel:6281865015", icon: Phone },
   ],
   about: {
-    avatar: PlaceHolderImages.find(img => img.id === 'avatar')?.imageUrl ?? "https://picsum.photos/seed/avatar/400/400",
+    avatar: PlaceHolderImages.find(img => img.id === 'avatar')?.imageUrl ?? "/image.png",
     descriptionPoints: [
       "Results-driven AI & Backend Engineer with hands-on experience in LLM-powered document automation, FastAPI backend systems, and production-grade deployments.",
       "I specialize in building scalable AI pipelines using LangChain, implementing secure JWT-based authentication systems, and containerizing applications with Docker for consistent dev-to-production environments.",
@@ -29,28 +35,14 @@ export const portfolioData = {
     ]
   },
   skills: [
-    { name: "Python", icon: Code, category: "Languages" },
-    { name: "Bash", icon: Code, category: "Languages" },
-  
+    { name: "Python", icon: Code, category: "Core" },
     { name: "FastAPI", icon: Server, category: "Backend" },
-    { name: "Django", icon: Server, category: "Backend" },
-    { name: "Flask", icon: Server, category: "Backend" },
-  
-    { name: "JWT Authentication", icon: Server, category: "Backend" },
-  
-    { name: "LangChain", icon: Code, category: "AI/LLM" },
-    { name: "Large Language Models", icon: Code, category: "AI/LLM" },
-    { name: "Prompt Engineering", icon: Code, category: "AI/LLM" },
-  
+    { name: "LLMs", icon: TestTube, category: "AI" },
     { name: "Docker", icon: Cloud, category: "DevOps" },
-    { name: "Docker Compose", icon: Cloud, category: "DevOps" },
     { name: "NGINX", icon: Server, category: "DevOps" },
-    { name: "Linux (Ubuntu)", icon: Server, category: "DevOps" },
-  
     { name: "PostgreSQL", icon: Database, category: "Database" },
-    { name: "MySQL", icon: Database, category: "Database" },
-  
-    { name: "Git", icon: Git, category: "Tools" }
+    { name: "JWT", icon: Server, category: "Security" },
+    { name: "Git", icon: Git, category: "Tools" },
   ],
   
   projects: [

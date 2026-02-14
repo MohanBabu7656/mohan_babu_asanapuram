@@ -2,6 +2,8 @@
 
 import { useFormStatus } from "react-dom";
 import { useEffect, useActionState, useRef } from "react";
+import Link from "next/link";
+import { Phone } from "lucide-react";
 
 import { submitContactForm } from "@/lib/actions";
 import { Button } from "@/components/ui/button";
@@ -10,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { WhatsappIcon } from "@/components/icons";
+
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -54,10 +58,25 @@ export function Contact() {
             Get In Touch
           </h2>
           <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Have a project in mind or just want to say hello? Drop me a line.
+            Have a project in mind or just want to say hello? Drop me a line or reach out directly.
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Button asChild className="w-full sm:w-auto">
+                <Link href="https://wa.me/qr/DADEAHEKQIS3P1" target="_blank" rel="noopener noreferrer">
+                    <WhatsappIcon className="mr-2 h-5 w-5" />
+                    Chat on WhatsApp
+                </Link>
+            </Button>
+            <Button variant="secondary" asChild className="w-full sm:w-auto">
+                <Link href="tel:6281865015">
+                    <Phone className="mr-2 h-5 w-5" />
+                    +91 6281865015
+                </Link>
+            </Button>
+          </div>
         </div>
         <div className="mx-auto w-full max-w-lg">
+          <p className="mb-4 text-center font-semibold text-muted-foreground">Or send me a message directly</p>
           <form ref={formRef} action={formAction} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
