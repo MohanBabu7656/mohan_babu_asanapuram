@@ -64,10 +64,11 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 function getPortfolioContentAsString(): string {
   const { name, jobTitle, about, skills, projects, experience, socials } = portfolioData;
 
+  const contacts = socials.filter(s => s.name === 'Email' || s.name === 'Phone' || s.name === 'WhatsApp');
   const skillsString = skills.map(skill => skill.name).join(', ');
   const projectsString = projects.map(p => `Title: ${p.title}, Description: ${p.shortDescription}`).join('\n');
   const experienceString = experience.map(exp => `${exp.role} at ${exp.organization} (${exp.duration})`).join('\n');
-  const socialsString = socials.map(s => `${s.name}: ${s.url}`).join('\n');
+  const contactsString = contacts.map(s => `${s.name}: ${s.url}`).join('\n');
 
   return `
     Portfolio of ${name}, ${jobTitle}.
@@ -78,7 +79,7 @@ function getPortfolioContentAsString(): string {
     Projects:
     ${projectsString}
     Contact Information:
-    ${socialsString}
+    ${contactsString}
   `;
 }
 
@@ -98,6 +99,12 @@ export async function askAI(question: string) {
     return result.answer;
   } catch (error) {
     console.error("Error with AI assistant:", error);
-    return "Sorry, I'm having trouble connecting to my brain right now. Please try again later.";
+    let errorMessage = "Sorry, I'm having trouble connecting to my brain right now. Please try again later.";
+    if (error instanceof Error) {
+        if (error.message.includes("API key not valid")) {
+            errorMessage = "It seems the provided GEMINI_API_KEY is not valid. Please check your .env file and ensure it's a correct, active Google AI API key.";
+        }
+    }
+    return errorMessage;
   }
 }
