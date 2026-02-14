@@ -103,8 +103,8 @@ export async function askAI(question: string) {
         if (error.message.includes("API key is invalid")) {
             return "It seems the provided Gemini API key is invalid. Please ensure you have a valid key in your `GEMINI_API_KEY` secret to enable the AI assistant.";
         }
-        if (error.message.includes("exceeded your current quota")) {
-          return "It looks like I've been very popular! The free quota has been used up for now. Please try again later.";
+        if (error.message.includes("quota") || error.message.includes("429")) {
+            return "I'm getting a lot of questions right now! It looks like I've hit my request limit for the moment. Please try again in a little bit.";
         }
         return "Sorry, I'm having trouble connecting to my brain right now. Please try again in a moment.";
     }
