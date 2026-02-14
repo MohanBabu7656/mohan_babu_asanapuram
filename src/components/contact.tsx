@@ -54,10 +54,10 @@ export function Contact() {
     <section id="contact" className="w-full py-16 md:py-24 bg-card">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">
+          <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
             Get In Touch
           </h2>
-          <p className="max-w-[900px] text-muted-foreground text-base/relaxed md:text-xl/relaxed">
+          <p className="max-w-[900px] text-muted-foreground text-base/relaxed sm:text-lg/relaxed">
             Have a project in mind or just want to say hello? Drop me a line or reach out directly.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
