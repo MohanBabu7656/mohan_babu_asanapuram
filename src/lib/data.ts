@@ -3,52 +3,84 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const portfolioData = {
   name: "Mohan Babu Asanapuram",
-  jobTitle: "Creative Developer & UI/UX Enthusiast",
+  jobTitle: "AI & Backend Engineer | LLM Automation | FastAPI | Docker | Deployment Specialist",
+  organization: "Tech Mahindra",
   greetings: ["Hello, I'm", "Hola, soy", "Bonjour, je suis"],
   socials: [
-    { name: "GitHub", url: "https://github.com", icon: GitHub },
-    { name: "LinkedIn", url: "https://linkedin.com", icon: Linkedin },
-    { name: "Twitter", url: "https://twitter.com", icon: Twitter },
-    { name: "Email", url: "mailto:mohan@example.com", icon: Mail },
+    { name: "GitHub", url: "https://github.com/MohanBabu7656", icon: GitHub },
+    { name: "LinkedIn", url: "https://linkedin.com/in/mohan-babu-asanapuram-b37923214", icon: Linkedin },
+    { name: "Email", url: "mailto:asanapurammohanbabu@gmail.com", icon: Mail },
+
   ],
   about: {
     avatar: PlaceHolderImages.find(img => img.id === 'avatar')?.imageUrl ?? "https://picsum.photos/seed/avatar/400/400",
-    description: "I am a passionate and results-oriented Creative Developer with a strong eye for UI/UX design. With a foundation in modern web technologies, I specialize in building beautiful, functional, and user-centric digital experiences. My journey in tech has been driven by a constant curiosity and a desire to merge the worlds of design and development seamlessly. From crafting pixel-perfect interfaces to architecting robust full-stack applications, I thrive on challenges that push my creative and technical boundaries."
+    descriptionPoints: [
+      "Results-driven AI & Backend Engineer with hands-on experience in LLM-powered document automation, FastAPI backend systems, and production-grade deployments.",
+      "I specialize in building scalable AI pipelines using LangChain, implementing secure JWT-based authentication systems, and containerizing applications with Docker for consistent dev-to-production environments.",
+      "Currently acting as Project POC for AI automation deployments, handling client coordination, release management, and Linux-based hosting using NGINX reverse proxy.",
+      "I focus on performance, automation, security, and reliability while building real-world production systems."
+    ]
   },
   skills: [
-    { name: "React", icon: ReactIcon, category: "Frontend" },
-    { name: "Next.js", icon: Nextjs, category: "Frontend" },
-    { name: "TypeScript", icon: Typescript, category: "Languages" },
-    { name: "Tailwind CSS", icon: Tailwind, category: "Frontend" },
-    { name: "Figma", icon: Figma, category: "Design" },
-    { name: "Framer", icon: Framer, category: "Design" },
-    { name: "Node.js", icon: Server, category: "Backend" },
-    { name: "Git", icon: Git, category: "Tools" },
-    { name: "Databases", icon: Database, category: "Backend" },
-    { name: "Testing", icon: TestTube, category: "Tools" },
-    { name: "Cloud Services", icon: Cloud, category: "Tools" },
-    { name: "UI/UX Design", icon: Palette, category: "Design" }
+    { name: "Python", icon: Code, category: "Languages" },
+    { name: "Bash", icon: Code, category: "Languages" },
+  
+    { name: "FastAPI", icon: Server, category: "Backend" },
+    { name: "Django", icon: Server, category: "Backend" },
+    { name: "Flask", icon: Server, category: "Backend" },
+  
+    { name: "JWT Authentication", icon: Server, category: "Backend" },
+  
+    { name: "LangChain", icon: Code, category: "AI/LLM" },
+    { name: "Large Language Models", icon: Code, category: "AI/LLM" },
+    { name: "Prompt Engineering", icon: Code, category: "AI/LLM" },
+  
+    { name: "Docker", icon: Cloud, category: "DevOps" },
+    { name: "Docker Compose", icon: Cloud, category: "DevOps" },
+    { name: "NGINX", icon: Server, category: "DevOps" },
+    { name: "Linux (Ubuntu)", icon: Server, category: "DevOps" },
+  
+    { name: "PostgreSQL", icon: Database, category: "Database" },
+    { name: "MySQL", icon: Database, category: "Database" },
+  
+    { name: "Git", icon: Git, category: "Tools" }
   ],
+  
   projects: [
     {
       id: "project-1",
-      title: "Interactive Data Dashboard",
-      shortDescription: "A dynamic and responsive data visualization platform.",
-      longDescription: "This project is a comprehensive data dashboard built with Next.js and Recharts, offering users an interactive way to explore complex datasets. It features real-time data updates, customizable chart types, and a sleek, modern user interface designed for intuitive navigation. The backend is powered by a Node.js API, ensuring high performance and scalability.",
-      tags: ["Next.js", "React", "Tailwind CSS", "Data Visualization"],
+      title: "AI-Powered Document Automation Platform",
+      shortDescription: "LLM-driven document cleaning, structuring, and automation system.",
+      longDescription: `
+    Built an end-to-end AI-powered document automation platform using 
+    FastAPI and LangChain. The system processes DOCX and PDF files, 
+    applies LLM-based cleaning, formatting normalization, and 
+    automated summarization.
+    
+    Implemented secure JWT authentication, containerized the entire 
+    application using Docker, and deployed using NGINX reverse proxy 
+    in a Linux environment.
+    
+    Handled deployment documentation, automation scripts, and release workflows.
+      `,
+      tags: ["FastAPI", "LangChain", "LLMs", "Docker", "NGINX", "JWT", "Linux"],
       image: PlaceHolderImages.find(img => img.id === 'project-1'),
-      liveUrl: "#",
-      repoUrl: "#"
-    },
+      isExperienceProject: true
+    },    
     {
       id: "project-2",
-      title: "E-commerce Storefront",
-      shortDescription: "A modern, full-featured online shopping experience.",
-      longDescription: "A complete e-commerce solution designed for a seamless user journey from product discovery to checkout. Features include a powerful search, product filtering, user accounts, and a secure payment gateway integration. The UI/UX was meticulously designed in Figma and brought to life with Framer Motion for subtle, engaging animations.",
-      tags: ["React", "E-commerce", "Figma", "Framer Motion"],
+      title: "JWT-Based Authentication System",
+      shortDescription: "Secure login, token generation & refresh workflow.",
+      longDescription: `
+    Designed and implemented a secure authentication system using 
+    FastAPI and JWT. Built user and token schemas, implemented 
+    token refresh logic, and created session-based backend workflows.
+    
+    Ensured secure API access and role-based authorization mechanisms.
+      `,
+      tags: ["FastAPI", "JWT", "Authentication", "Backend Security"],
       image: PlaceHolderImages.find(img => img.id === 'project-2'),
-      liveUrl: "#",
-      repoUrl: "#"
+      isExperienceProject: true
     },
     {
       id: "project-3",

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { portfolioData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ChevronRight } from "lucide-react";
 
 export function About() {
   const skills = portfolioData.skills;
@@ -26,9 +27,14 @@ export function About() {
                 data-ai-hint="portrait person"
               />
             </div>
-            <p className="max-w-prose text-muted-foreground md:text-lg/relaxed">
-              {portfolioData.about.description}
-            </p>
+            <div className="max-w-prose text-muted-foreground md:text-lg/relaxed space-y-4">
+              {portfolioData.about.descriptionPoints.map((point, index) => (
+                <div key={index} className="flex items-start gap-2">
+                  <ChevronRight className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <p>{point}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="space-y-6">
             <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left">My Skillset</h3>

@@ -71,17 +71,29 @@ export function Projects() {
                     {project.longDescription}
                   </p>
                 </div>
-                <div className="flex gap-4">
-                  <Button asChild>
-                    <Link href={project.liveUrl} target="_blank">
-                      <ExternalLink className="mr-2 h-4 w-4"/> Live Demo
-                    </Link>
-                  </Button>
-                  <Button variant="secondary" asChild>
-                    <Link href={project.repoUrl} target="_blank">
-                      <Github className="mr-2 h-4 w-4"/> View Code
-                    </Link>
-                  </Button>
+                <div className="flex gap-4 items-center">
+                  {'isExperienceProject' in project && project.isExperienceProject ? (
+                    <Badge variant="outline" className="text-sm">
+                      Part of my experience at {portfolioData.organization}
+                    </Badge>
+                  ) : (
+                    <>
+                      {'liveUrl' in project && project.liveUrl && (
+                        <Button asChild>
+                          <Link href={project.liveUrl} target="_blank">
+                            <ExternalLink className="mr-2 h-4 w-4"/> Live Demo
+                          </Link>
+                        </Button>
+                      )}
+                      {'repoUrl' in project && project.repoUrl && (
+                        <Button variant="secondary" asChild>
+                          <Link href={project.repoUrl} target="_blank">
+                            <Github className="mr-2 h-4 w-4"/> View Code
+                          </Link>
+                        </Button>
+                      )}
+                    </>
+                  )}
                 </div>
               </DialogContent>
             </Dialog>

@@ -69,7 +69,7 @@ function getPortfolioContentAsString(): string {
 
   return `
     Portfolio of ${name}, ${jobTitle}.
-    About: ${about.description}
+    About: ${about.descriptionPoints.join(' ')}
     Skills: ${skillsString}
     Projects:
     ${projectsString}
