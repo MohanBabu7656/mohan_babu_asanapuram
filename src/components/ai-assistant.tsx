@@ -15,6 +15,45 @@ type Message = {
   content: string;
 };
 
+// A simple component to find and render clickable links in text
+const LinkifiedContent = ({ text }: { text: string }) => {
+  const urlRegex = /(https?:\/\/\S+|mailto:\S+|tel:\S+)/g;
+  const parts = text.split(urlRegex);
+
+  return (
+    <p className="text-sm break-words">
+      {parts.map((part, i) => {
+        if (!part || !part.match(urlRegex)) {
+          return part;
+        }
+
+        const href = part;
+        let display = part;
+        if (part.startsWith('mailto:')) {
+          display = part.substring('mailto:'.length);
+        } else if (part.startsWith('tel:')) {
+          display = part.substring('tel:'.length);
+        }
+        
+        const isHttpLink = part.startsWith('http');
+
+        return (
+          <a
+            key={i}
+            href={href}
+            target={isHttpLink ? "_blank" : undefined}
+            rel={isHttpLink ? "noopener noreferrer" : undefined}
+            className="text-primary underline hover:text-primary/80"
+          >
+            {display}
+          </a>
+        );
+      })}
+    </p>
+  );
+};
+
+
 export function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -112,7 +151,11 @@ export function AIAssistant() {
                         message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'
                       )}
                     >
-                      <p className="text-sm">{message.content}</p>
+                      {message.role === 'assistant' ? (
+                        <LinkifiedContent text={message.content} />
+                      ) : (
+                        <p className="text-sm">{message.content}</p>
+                      )}
                     </div>
                     {message.role === 'user' && (
                        <Avatar className="w-8 h-8">
