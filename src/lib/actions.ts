@@ -62,11 +62,12 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 }
 
 function getPortfolioContentAsString(): string {
-  const { name, jobTitle, about, skills, projects, experience } = portfolioData;
+  const { name, jobTitle, about, skills, projects, experience, socials } = portfolioData;
 
   const skillsString = skills.map(skill => skill.name).join(', ');
   const projectsString = projects.map(p => `Title: ${p.title}, Description: ${p.shortDescription}`).join('\n');
   const experienceString = experience.map(exp => `${exp.role} at ${exp.organization} (${exp.duration})`).join('\n');
+  const socialsString = socials.map(s => `${s.name}: ${s.url}`).join('\n');
 
   return `
     Portfolio of ${name}, ${jobTitle}.
@@ -76,6 +77,8 @@ function getPortfolioContentAsString(): string {
     Skills: ${skillsString}
     Projects:
     ${projectsString}
+    Contact Information:
+    ${socialsString}
   `;
 }
 

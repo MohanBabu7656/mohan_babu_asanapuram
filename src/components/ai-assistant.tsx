@@ -30,20 +30,30 @@ export function AIAssistant() {
     }
   }, [messages]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!input.trim() || isPending) return;
+  const callAI = (question: string) => {
+    if (!question.trim() || isPending) return;
 
-    const userMessage: Message = { role: 'user', content: input };
+    const userMessage: Message = { role: 'user', content: question };
     setMessages((prev) => [...prev, userMessage]);
-    setInput('');
+    if (input) setInput('');
 
     startTransition(async () => {
-      const assistantResponse = await askAI(input);
+      const assistantResponse = await askAI(question);
       const assistantMessage: Message = { role: 'assistant', content: assistantResponse };
       setMessages((prev) => [...prev, assistantMessage]);
     });
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    callAI(input);
   };
+  
+  const suggestedQuestions = [
+    "What are Mohan's main skills?",
+    "Tell me about his work experience.",
+    "How can I contact him?",
+  ];
 
   return (
     <>
@@ -69,9 +79,20 @@ export function AIAssistant() {
                     <AvatarFallback><Bot size={20}/></AvatarFallback>
                   </Avatar>
                   <div className="p-3 rounded-lg bg-muted max-w-[80%]">
-                    <p className="text-sm">Hello! Ask me anything about Mohan's portfolio, skills, or projects.</p>
+                    <p className="text-sm">Hello! I'm Mad. Ask me anything about Mohan's portfolio, skills, or projects, or try one of the suggestions below.</p>
                   </div>
                 </div>
+
+                {messages.length === 0 && (
+                  <div className="flex flex-col items-start gap-2">
+                     {suggestedQuestions.map((q, i) => (
+                      <Button key={i} variant="outline" size="sm" className="w-auto text-left justify-start" onClick={() => callAI(q)} disabled={isPending}>
+                        {q}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+
                 {messages.map((message, index) => (
                   <div
                     key={index}
