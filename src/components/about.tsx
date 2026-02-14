@@ -1,12 +1,17 @@
 import Image from "next/image";
 import { portfolioData } from "@/lib/data";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card } from "@/components/ui/card";
 import { ChevronRight, Briefcase } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export function About() {
   const skills = portfolioData.skills;
-  const categories = ["All", ...Array.from(new Set(skills.map(s => s.category)))];
   const experiences = portfolioData.experience;
 
   return (
@@ -57,27 +62,34 @@ export function About() {
             </div>
             <div>
               <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left mb-6">My Skillset</h3>
-              <Tabs defaultValue="All" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-4">
-                  {categories.map((category) => (
-                    <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
-                  ))}
-                </TabsList>
-                {categories.map((category) => (
-                  <TabsContent key={category} value={category}>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                      {skills
-                        .filter(skill => category === "All" || skill.category === category)
-                        .map((skill) => (
-                          <Card key={skill.name} className="flex flex-col items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
+              <div className="relative">
+                <Carousel
+                  opts={{
+                    align: "start",
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {skills.map((skill, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="basis-1/3 sm:basis-1/4 lg:basis-1/5"
+                      >
+                        <div className="p-1">
+                          <Card className="flex flex-col aspect-square items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
                             <skill.icon className="w-8 h-8 mb-2 text-primary" />
-                            <span className="text-sm font-medium">{skill.name}</span>
+                            <span className="text-sm font-medium text-center">
+                              {skill.name}
+                            </span>
                           </Card>
-                        ))}
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="hidden sm:flex" />
+                  <CarouselNext className="hidden sm:flex" />
+                </Carousel>
+              </div>
             </div>
           </div>
         </div>
