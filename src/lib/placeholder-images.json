@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "avatar",
+      "description": "Professional headshot of a person in a modern setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1575264821278-fd76711cd1b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cG9ydHJhaXQlMjBwZXJzb258ZW58MHx8fHwxNzcxMDA0NTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait person"
+    },
+    {
+      "id": "project-1",
+      "description": "Abstract representation of a data dashboard with glowing charts.",
+      "imageUrl": "https://images.unsplash.com/photo-1510906594845-bc082582c8cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGRhdGF8ZW58MHx8fHwxNzcxMDY2NDY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract data"
+    },
+    {
+      "id": "project-2",
+      "description": "Minimalist layout of an e-commerce website product page.",
+      "imageUrl": "https://images.unsplash.com/photo-1760564877737-3686929411cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaW5pbWFsaXN0JTIwc2hvcHBpbmd8ZW58MHx8fHwxNzcxMDQ0NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist shopping"
+    },
+    {
+      "id": "project-3",
+      "description": "A striking and artistic design for a creative agency website.",
+      "imageUrl": "https://images.unsplash.com/photo-1494253109108-2e30c049369b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjcmVhdGl2ZSUyMGRlc2lnbnxlbnwwfHx8fDE3NzEwNDQ4MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "creative design"
+    },
+    {
+      "id": "project-4",
+      "description": "A futuristic interface representing an AI-powered application.",
+      "imageUrl": "https://images.unsplash.com/photo-1660165458059-57cfb6cc87e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmdXR1cmlzdGljJTIwQUl8ZW58MHx8fHwxNzcxMDgxNzc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "futuristic AI"
+    }
+  ]
 }
