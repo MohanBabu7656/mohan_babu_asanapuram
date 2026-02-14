@@ -31,11 +31,10 @@ export async function submitContactForm(prevState: any, formData: FormData) {
   const { name, email, message } = validatedFields.data;
 
   if (!process.env.RESEND_API_KEY || !portfolioEmail) {
-    console.log("RESEND_API_KEY is not set or portfolio email is not available. Email not sent.");
-    console.log("Form data:", validatedFields.data);
+    console.error("RESEND_API_KEY is not set or portfolio email is not available.");
     return {
-      success: true,
-      message: "Message sent! (Note: This is a demo. The message is logged to the server console, not emailed.)",
+        success: false,
+        message: "Server is not configured for sending emails. Please contact the administrator.",
     };
   }
 
