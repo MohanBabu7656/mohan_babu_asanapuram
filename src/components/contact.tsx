@@ -1,10 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useEffect, useActionState } from "react";
+import { useEffect, useActionState, useRef } from "react";
 
 import { submitContactForm } from "@/lib/actions";
 import { Button } from "@/components/ui/button";
@@ -13,14 +10,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Invalid email address."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -35,15 +24,7 @@ function SubmitButton() {
 export function Contact() {
   const [state, formAction] = useActionState(submitContactForm, null);
   const { toast } = useToast();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-  });
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (state?.success) {
@@ -51,24 +32,19 @@ export function Contact() {
         title: "Success!",
         description: state.message,
       });
-      reset();
-    } else if (state?.success === false && state.message !== "Validation failed.") {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: state.message,
-      });
+      formRef.current?.reset();
+    } else if (state?.success === false && state.message) {
+       // Only show toast for non-validation errors, as they are displayed inline
+      if (state.message !== "Validation failed.") {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: state.message,
+        });
+      }
     }
-  }, [state, toast, reset]);
+  }, [state, toast]);
   
-  const onFormSubmit = (data: ContactFormValues) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("message", data.message);
-    formAction(formData);
-  };
-
 
   return (
     <section id="contact" className="w-full py-16 md:py-24 bg-card">
@@ -82,21 +58,21 @@ export function Contact() {
           </p>
         </div>
         <div className="mx-auto w-full max-w-lg">
-          <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
+          <form ref={formRef} action={formAction} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" {...register("name")} placeholder="Your Name" />
-              {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
+              <Input id="name" name="name" placeholder="Your Name" />
+              {state?.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" {...register("email")} placeholder="your.email@example.com" />
-              {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+              <Input id="email" type="email" name="email" placeholder="your.email@example.com" />
+              {state?.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="message">Message</Label>
-              <Textarea id="message" {...register("message")} placeholder="Your message..." rows={5} />
-              {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
+              <Textarea id="message" name="message" placeholder="Your message..." rows={5} />
+              {state?.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
             </div>
             <SubmitButton />
           </form>
