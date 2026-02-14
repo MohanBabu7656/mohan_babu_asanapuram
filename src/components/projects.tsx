@@ -72,10 +72,15 @@ export function Projects() {
                   </p>
                 </div>
                 <div className="flex gap-4 items-center">
-                  {'isExperienceProject' in project && project.isExperienceProject ? (
-                    <Badge variant="outline" className="text-sm">
-                      Part of my experience at {portfolioData.organization}
-                    </Badge>
+                  {'organizationId' in project && project.organizationId ? (
+                    (() => {
+                      const org = portfolioData.experience.find(e => e.id === project.organizationId);
+                      return (
+                        <Badge variant="outline" className="text-sm">
+                          Part of my experience at {org ? org.organization : 'a previous company'}
+                        </Badge>
+                      );
+                    })()
                   ) : (
                     <>
                       {'liveUrl' in project && project.liveUrl && (

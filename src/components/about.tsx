@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { portfolioData } from "@/lib/data";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Briefcase } from "lucide-react";
 
 export function About() {
   const skills = portfolioData.skills;
   const categories = ["All", ...Array.from(new Set(skills.map(s => s.category)))];
+  const experiences = portfolioData.experience;
 
   return (
     <section id="about" className="w-full py-16 md:py-24 bg-card">
@@ -36,29 +37,48 @@ export function About() {
               ))}
             </div>
           </div>
-          <div className="space-y-6">
-            <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left">My Skillset</h3>
-            <Tabs defaultValue="All" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-4">
-                {categories.map((category) => (
-                  <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
-                ))}
-              </TabsList>
-              {categories.map((category) => (
-                <TabsContent key={category} value={category}>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    {skills
-                      .filter(skill => category === "All" || skill.category === category)
-                      .map((skill) => (
-                        <Card key={skill.name} className="flex flex-col items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
-                          <skill.icon className="w-8 h-8 mb-2 text-primary" />
-                          <span className="text-sm font-medium">{skill.name}</span>
-                        </Card>
-                      ))}
+          <div className="space-y-8">
+            <div>
+              <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left mb-6">Work Experience</h3>
+              <div className="space-y-6">
+                {experiences.map((exp) => (
+                  <div key={exp.id} className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <Briefcase className="w-8 h-8 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg">{exp.role}</h4>
+                      <p className="font-medium text-primary-foreground/90">{exp.organization}</p>
+                      <p className="text-sm text-muted-foreground">{exp.duration}</p>
+                    </div>
                   </div>
-                </TabsContent>
-              ))}
-            </Tabs>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left mb-6">My Skillset</h3>
+              <Tabs defaultValue="All" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-4">
+                  {categories.map((category) => (
+                    <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+                  ))}
+                </TabsList>
+                {categories.map((category) => (
+                  <TabsContent key={category} value={category}>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                      {skills
+                        .filter(skill => category === "All" || skill.category === category)
+                        .map((skill) => (
+                          <Card key={skill.name} className="flex flex-col items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
+                            <skill.icon className="w-8 h-8 mb-2 text-primary" />
+                            <span className="text-sm font-medium">{skill.name}</span>
+                          </Card>
+                        ))}
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </div>
           </div>
         </div>
       </div>

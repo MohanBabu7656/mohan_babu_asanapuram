@@ -4,7 +4,14 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 export const portfolioData = {
   name: "Mohan Babu Asanapuram",
   jobTitle: "AI & Backend Engineer | LLM Automation | FastAPI | Docker | Deployment Specialist",
-  organization: "Tech Mahindra",
+  experience: [
+    {
+      id: 'techm',
+      organization: 'Tech Mahindra',
+      role: 'AI & Backend Engineer',
+      duration: '2022 - Present',
+    }
+  ],
   greetings: ["Hello, I'm", "Hola, soy", "Bonjour, je suis"],
   socials: [
     { name: "GitHub", url: "https://github.com/MohanBabu7656", icon: GitHub },
@@ -65,7 +72,7 @@ export const portfolioData = {
       `,
       tags: ["FastAPI", "LangChain", "LLMs", "Docker", "NGINX", "JWT", "Linux"],
       image: PlaceHolderImages.find(img => img.id === 'project-1'),
-      isExperienceProject: true
+      organizationId: 'techm'
     },    
     {
       id: "project-2",
@@ -80,7 +87,7 @@ export const portfolioData = {
       `,
       tags: ["FastAPI", "JWT", "Authentication", "Backend Security"],
       image: PlaceHolderImages.find(img => img.id === 'project-2'),
-      isExperienceProject: true
+      organizationId: 'techm'
     },
     {
       id: "project-3",
