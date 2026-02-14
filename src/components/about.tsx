@@ -29,16 +29,16 @@ export function About() {
                 data-ai-hint="portrait person"
               />
             </div>
-            <div className="max-w-prose text-muted-foreground md:text-lg/relaxed space-y-4">
+            <div className="max-w-prose text-muted-foreground text-base/relaxed md:text-lg/relaxed space-y-4">
               {portfolioData.about.descriptionPoints.map((point, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <ChevronRight className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  <p>{point}</p>
+                  <p className="break-words">{point}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-8 overflow-hidden">
             <div>
               <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left mb-6">Work Experience</h3>
               <div className="space-y-6">
@@ -47,9 +47,9 @@ export function About() {
                     <div className="flex-shrink-0">
                       <Briefcase className="w-8 h-8 text-primary" />
                     </div>
-                    <div>
-                      <h4 className="font-bold text-lg">{exp.role}</h4>
-                      <p className="font-medium text-primary-foreground/90">{exp.organization}</p>
+                    <div className="min-w-0">
+                      <h4 className="font-bold text-lg break-words">{exp.role}</h4>
+                      <p className="font-medium text-primary-foreground/90 break-words">{exp.organization}</p>
                       <p className="text-sm text-muted-foreground">{exp.duration}</p>
                     </div>
                   </div>
