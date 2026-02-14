@@ -55,6 +55,7 @@ export function Hero() {
           <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="block text-primary text-xl sm:text-2xl font-normal mb-2">
               <AnimatedTypingText texts={portfolioData.greetings} />
+              &nbsp;
             </span>
             {portfolioData.name}
           </h1>

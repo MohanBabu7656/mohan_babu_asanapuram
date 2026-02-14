@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 export function About() {
   const skills = portfolioData.skills;
   const experiences = portfolioData.experience;
-  const skillCategories = [...new Set(skills.map((skill) => skill.category))];
+  const skillCategories = ["All", ...new Set(skills.map((skill) => skill.category))];
 
   return (
     <section id="about" className="w-full py-16 md:py-24 bg-card">
@@ -58,7 +58,7 @@ export function About() {
             </div>
             <div>
               <h3 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl text-center md:text-left mb-6">My Skillset</h3>
-              <Tabs defaultValue={skillCategories[0]} className="w-full">
+              <Tabs defaultValue="All" className="w-full">
                 <div className="w-full overflow-x-auto pb-2">
                     <TabsList className="inline-flex">
                         {skillCategories.map((category) => (
@@ -73,7 +73,7 @@ export function About() {
                         <ScrollArea className="h-64">
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pr-4">
                                 {skills
-                                    .filter((skill) => skill.category === category)
+                                    .filter((skill) => category === 'All' || skill.category === category)
                                     .map((skill, index) => (
                                         <Card key={index} className="flex flex-col aspect-square items-center justify-center p-4 text-center bg-background/50 hover:bg-background transition-colors">
                                             <skill.icon className="w-8 h-8 mb-2 text-primary" />
