@@ -15,7 +15,7 @@ export function Projects() {
           <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">
             My Creative Work
           </h2>
-          <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          <p className="max-w-[900px] text-muted-foreground text-base/relaxed md:text-xl/relaxed">
             A selection of projects that showcase my passion for design and development.
           </p>
         </div>

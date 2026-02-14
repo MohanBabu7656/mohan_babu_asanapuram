@@ -39,7 +39,7 @@ const AnimatedTypingText = ({ texts }: { texts: string[] }) => {
 
   return (
     <span className="inline-block pr-1 border-r-2 border-primary" aria-label={text}>
-      {text}&nbsp;
+      {text}
     </span>
   );
 };
@@ -52,13 +52,13 @@ export function Hero() {
       
       <div className="container relative z-10 px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="block text-primary text-xl sm:text-2xl font-normal mb-2">
+          <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+            <span className="block text-primary text-lg sm:text-2xl font-normal mb-2">
               <AnimatedTypingText texts={portfolioData.greetings} />
             </span>
             {portfolioData.name}
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground md:text-xl">
+          <p className="mt-4 text-base text-muted-foreground sm:text-lg md:text-xl">
             {portfolioData.jobTitle}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

@@ -57,7 +57,7 @@ export function Contact() {
           <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">
             Get In Touch
           </h2>
-          <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          <p className="max-w-[900px] text-muted-foreground text-base/relaxed md:text-xl/relaxed">
             Have a project in mind or just want to say hello? Drop me a line or reach out directly.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
