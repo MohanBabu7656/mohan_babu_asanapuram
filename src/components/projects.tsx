@@ -43,7 +43,7 @@ export function Projects() {
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[650px] bg-card">
+              <DialogContent className="sm:max-w-[650px] bg-card max-h-[90svh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle className="font-headline text-2xl">{project.title}</DialogTitle>
                   <DialogDescription>
