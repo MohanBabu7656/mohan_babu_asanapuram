@@ -154,7 +154,7 @@ export function AIAssistant() {
                       {message.role === 'assistant' ? (
                         <LinkifiedContent text={message.content} />
                       ) : (
-                        <p className="text-sm">{message.content}</p>
+                        <p className="text-sm break-words">{message.content}</p>
                       )}
                     </div>
                     {message.role === 'user' && (
