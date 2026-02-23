@@ -4,7 +4,7 @@ import { About } from "@/components/about";
 import { Projects } from "@/components/projects";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
-import { AIAssistant } from "@/components/ai-assistant";
+// import { AIAssistant } from "@/components/ai-assistant";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <Projects />
         <Contact />
       </main>
-      <AIAssistant />
+    
       <Footer />
     </div>
   );
