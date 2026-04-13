@@ -83,13 +83,38 @@ export const portfolioData = {
     },
     {
       id: "project-3",
-      title: "Creative Agency Website",
-      shortDescription: "A visually-driven portfolio site for a design agency.",
-      longDescription: "This is a portfolio website for a creative agency, focusing on showcasing their work through a highly visual and interactive gallery. The design employs a minimalist aesthetic with bold typography and captivating animations to create a premium feel. Built with a headless CMS for easy content management.",
-      tags: ["UI/UX", "Animation", "Headless CMS", "TypeScript"],
+      title: "AI Resume Scorer & JD Matching System",
+      shortDescription: "ATS-style resume scoring with AI feedback and job description matching.",
+      longDescription: `
+    Built a full-stack AI-powered Resume Scorer that evaluates resumes against job descriptions 
+    and provides ATS-style scoring, skill gap analysis, and improvement suggestions.
+    
+    Developed the backend using FastAPI to handle resume parsing (PDF/DOCX), text extraction, 
+    and scoring workflows. Integrated NVIDIA open-source LLMs to generate intelligent feedback, 
+    highlight missing keywords, and improve resume quality.
+    
+    Implemented semantic matching between resumes and job descriptions to calculate relevance 
+    scores based on skills, experience, and contextual understanding.
+    
+    Built a responsive frontend using React.js to allow users to upload resumes, input job 
+    descriptions, and view structured insights in real time. Deployed the frontend and backend 
+    using Vercel for seamless accessibility and fast performance.
+    
+    Designed the system with modular architecture for scalability, enabling future extensions 
+    like recruiter dashboards, analytics, and automated hiring pipelines.
+      `,
+      tags: [
+        "FastAPI",
+        "React.js",
+        "LLMs",
+        "NLP",
+        "Resume Parsing",
+        "Vercel",
+        "Full Stack AI"
+      ],
       image: PlaceHolderImages.find(img => img.id === 'project-3'),
-      liveUrl: "#",
-      repoUrl: "#"
+      liveUrl: "https://resumescorerfrontend.vercel.app/",
+      repoUrl: "https://github.com/MohanBabu7656/resume_scorer"
     },
     {
       id: "project-4",
